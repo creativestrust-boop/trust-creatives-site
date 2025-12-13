@@ -20,7 +20,10 @@ import {
   Send,
   Users,
   ShieldCheck,
-  FileText
+  FileText,
+  Zap,
+  Target,
+  Award
 } from 'lucide-react';
 
 // --- Components ---
@@ -143,6 +146,29 @@ const App = () => {
     }
   ];
 
+  const processSteps = [
+    {
+      icon: <Zap className="w-6 h-6" />,
+      title: "Discovery",
+      description: "We dive deep into your business goals and market position."
+    },
+    {
+      icon: <Target className="w-6 h-6" />,
+      title: "Strategy",
+      description: "Our experts build a tailored roadmap for your success."
+    },
+    {
+      icon: <PenTool className="w-6 h-6" />,
+      title: "Creation",
+      description: "We design world-class assets and campaigns."
+    },
+    {
+      icon: <Award className="w-6 h-6" />,
+      title: "Growth",
+      description: "We launch, measure, and optimize for maximum ROI."
+    }
+  ];
+
   const portfolio = [
     { 
       category: "Social Media Management", 
@@ -235,7 +261,7 @@ const App = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-1">
-              {["Services", "Work", "About", "Insights"].map((item) => (
+              {["Services", "Process", "Work", "About", "Insights"].map((item) => (
                 <a 
                   key={item}
                   href={`#${item.toLowerCase()}`} 
@@ -268,7 +294,7 @@ const App = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-[#0B1120] border-b border-slate-800 animate-in slide-in-from-top-5 duration-200">
             <div className="px-4 pt-2 pb-8 space-y-2">
-              {["Services", "Work", "About", "Insights"].map((item) => (
+              {["Services", "Process", "Work", "About", "Insights"].map((item) => (
                 <a key={item} href={`#${item.toLowerCase()}`} onClick={toggleMenu} className="block px-4 py-4 text-slate-300 hover:text-white hover:bg-slate-800 rounded-xl font-medium border border-transparent hover:border-slate-700 transition-all">
                   {item}
                 </a>
@@ -301,9 +327,9 @@ const App = () => {
                 #1 Creative Agency in Kenya
               </div>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-[1.1] mb-8">
-                We Build <br/>
+                Elevate Your <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">
-                  Market Leaders
+                  Brand Authority
                 </span>
               </h1>
               <p className="text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
@@ -411,6 +437,30 @@ const App = () => {
                  </a>
                </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Process Section (NEW) --- */}
+      <section id="process" className="py-24 bg-slate-900 border-y border-slate-800/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading subtitle="How We Work" title="Our Proven Process" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {processSteps.map((step, index) => (
+              <div key={index} className="relative group">
+                <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-sky-500/50 transition-all duration-300 h-full">
+                  <div className="w-12 h-12 bg-sky-900/50 rounded-xl flex items-center justify-center text-sky-400 mb-6 group-hover:scale-110 transition-transform">
+                    {step.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                  <p className="text-slate-400 text-sm">{step.description}</p>
+                </div>
+                {index < 3 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-slate-700 -translate-y-1/2 z-10"></div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
