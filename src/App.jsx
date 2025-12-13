@@ -10,7 +10,7 @@ import {
   BarChart3, 
   PenTool, 
   Megaphone, 
-  TrendingUp,
+  TrendingUp, 
   MessageCircle, 
   Phone,
   DollarSign,
